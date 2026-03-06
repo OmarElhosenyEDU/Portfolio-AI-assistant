@@ -27,6 +27,10 @@ const translations = {
         edu_uni: "University of Technology • 2014 - 2018",
         contact_title: "Let's Connect",
         contact_desc: "Available for freelance opportunities and exciting projects.",
+        download_cv: "Download CV",
+        copy_email: "Copy Email",
+        toast_cv: "CV Downloaded successfully!",
+        toast_email: "Email copied to clipboard!",
         chat_title: "AI Assistant",
         chat_placeholder: "Ask me anything...",
         chat_send: "Send"
@@ -57,6 +61,10 @@ const translations = {
         edu_uni: "جامعة التكنولوجيا • 2014 - 2018",
         contact_title: "لنتواصل",
         contact_desc: "متاح لفرص العمل الحر والمشاريع المثيرة.",
+        download_cv: "تحميل السيرة الذاتية",
+        copy_email: "نسخ البريد الإلكتروني",
+        toast_cv: "تم تحميل السيرة الذاتية بنجاح!",
+        toast_email: "تم نسخ البريد الإلكتروني!",
         chat_title: "المساعد الذكي",
         chat_placeholder: "اسألني أي شيء...",
         chat_send: "إرسال"
@@ -112,4 +120,101 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('lang', currentLang);
         applyLang(currentLang);
     });
+
+    // Download CV Functionality
+    const downloadBtn = document.getElementById('download-cv');
+    if (downloadBtn) {
+        downloadBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            try {
+                const cvContent = "Alex's Resume\n\nFull-Stack Developer\nExperience: 5+ Years\nSkills: JavaScript, React, Node.js, Python, PostgreSQL, Docker\n\nContact: alex@example.com";
+                const blob = new Blob([cvContent], { type: 'text/plain' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'Alex_CV.txt';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+                
+                showToast(translations[currentLang].toast_cv || "CV Downloaded successfully!");
+            } catch (err) {
+                console.error("Download failed", err);
+                showToast("Failed to download CV.");
+            }
+        });
+    }
+
+    // Copy Email Functionality
+    const copyEmailBtn = document.getElementById('copy-email');
+    if (copyEmailBtn) {
+        copyEmailBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            copyToClipboard('alex@example.com').then(() => {
+                showToast(translations[currentLang].toast_email || "Email copied to clipboard!");
+            }).catch(err => {
+                console.error('Failed to copy text: ', err);
+                showToast("Failed to copy email.");
+            });
+        });
+    }
+
+    // Back to Top Button Logic
+    const backToTopBtn = document.getElementById('back-to-top');
+    if (backToTopBtn) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.remove('hidden');
+            } else {
+                backToTopBtn.classList.add('hidden');
+            }
+        });
+
+        backToTopBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
 });
+
+// Toast Notification System (Global)
+window.showToast = function(message) {
+    const container = document.getElementById('toast-container');
+    if (!container) return;
+    const toast = document.createElement('div');
+    toast.className = 'toast';
+    toast.textContent = message;
+    container.appendChild(toast);
+    
+    setTimeout(() => {
+        toast.classList.add('fade-out');
+        toast.addEventListener('animationend', () => toast.remove());
+    }, 3000);
+};
+
+// Robust copy to clipboard function
+function copyToClipboard(text) {
+    if (navigator.clipboard && window.isSecureContext) {
+        return navigator.clipboard.writeText(text);
+    } else {
+        return new Promise((resolve, reject) => {
+            let textArea = document.createElement("textarea");
+            textArea.value = text;
+            textArea.style.position = "fixed";
+            textArea.style.left = "-999999px";
+            textArea.style.top = "-999999px";
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            try {
+                document.execCommand('copy');
+                resolve();
+            } catch (err) {
+                reject(err);
+            } finally {
+                textArea.remove();
+            }
+        });
+    }
+}

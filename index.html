@@ -10,6 +10,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Toast Container -->
+    <div id="toast-container"></div>
+
     <!-- Atmospheric Background -->
     <div class="bg-blobs">
         <div class="blob blob-1"></div>
@@ -36,6 +39,7 @@
                 <p data-i18n="hero_desc">I craft high-performance, beautiful web applications with a focus on user experience, modern architectures, and scalable backend systems.</p>
                 <div class="hero-actions">
                     <a href="#contact" class="glass-btn primary" data-i18n="contact_btn">Get in touch</a>
+                    <button id="download-cv" class="glass-btn" data-i18n="download_cv">Download CV</button>
                 </div>
             </div>
         </section>
@@ -67,15 +71,33 @@
             <h2 data-i18n="proj_title">Featured Projects</h2>
             <div class="project-list">
                 <div class="project-item glass-panel-inner">
-                    <h3 data-i18n="proj_1_title">Nexus AI Dashboard</h3>
+                    <div class="project-header">
+                        <h3 data-i18n="proj_1_title">Nexus AI Dashboard</h3>
+                        <div class="project-links">
+                            <button class="glass-btn icon-btn small-btn" title="Live Demo" onclick="showToast('Opening Live Demo...')">↗</button>
+                            <button class="glass-btn icon-btn small-btn" title="Source Code" onclick="showToast('Opening GitHub Repository...')">&lt;/&gt;</button>
+                        </div>
+                    </div>
                     <p class="text-muted" data-i18n="proj_1_desc">A real-time analytics dashboard powered by machine learning.</p>
                 </div>
                 <div class="project-item glass-panel-inner">
-                    <h3 data-i18n="proj_2_title">Aura E-Commerce</h3>
+                    <div class="project-header">
+                        <h3 data-i18n="proj_2_title">Aura E-Commerce</h3>
+                        <div class="project-links">
+                            <button class="glass-btn icon-btn small-btn" title="Live Demo" onclick="showToast('Opening Live Demo...')">↗</button>
+                            <button class="glass-btn icon-btn small-btn" title="Source Code" onclick="showToast('Opening GitHub Repository...')">&lt;/&gt;</button>
+                        </div>
+                    </div>
                     <p class="text-muted" data-i18n="proj_2_desc">High-conversion headless storefront built with modern web tech.</p>
                 </div>
                 <div class="project-item glass-panel-inner">
-                    <h3 data-i18n="proj_3_title">Nova Design System</h3>
+                    <div class="project-header">
+                        <h3 data-i18n="proj_3_title">Nova Design System</h3>
+                        <div class="project-links">
+                            <button class="glass-btn icon-btn small-btn" title="Live Demo" onclick="showToast('Opening Live Demo...')">↗</button>
+                            <button class="glass-btn icon-btn small-btn" title="Source Code" onclick="showToast('Opening GitHub Repository...')">&lt;/&gt;</button>
+                        </div>
+                    </div>
                     <p class="text-muted" data-i18n="proj_3_desc">Open-source component library for React and Vue.</p>
                 </div>
             </div>
@@ -110,13 +132,19 @@
         <section id="contact" class="bento-item span-1-col span-1-row center-card highlight-card">
             <h2 data-i18n="contact_title">Let's Connect</h2>
             <p class="text-muted" data-i18n="contact_desc">Available for freelance opportunities and exciting projects.</p>
+            <div class="contact-actions" style="margin-top: 1rem;">
+                <button id="copy-email" class="glass-btn" data-i18n="copy_email">Copy Email</button>
+            </div>
             <div class="social-links">
-                <a href="#" class="glass-btn icon-btn">GH</a>
-                <a href="#" class="glass-btn icon-btn">IN</a>
-                <a href="#" class="glass-btn icon-btn">TW</a>
+                <a href="https://github.com" target="_blank" class="glass-btn icon-btn" title="GitHub" onclick="showToast('Redirecting to GitHub...')">GH</a>
+                <a href="https://linkedin.com" target="_blank" class="glass-btn icon-btn" title="LinkedIn" onclick="showToast('Redirecting to LinkedIn...')">IN</a>
+                <a href="https://twitter.com" target="_blank" class="glass-btn icon-btn" title="Twitter" onclick="showToast('Redirecting to Twitter...')">TW</a>
             </div>
         </section>
     </main>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="glass-btn icon-btn hidden" aria-label="Back to Top">↑</button>
 
     <!-- Chatbot UI -->
     <div id="chatbot-container">

@@ -69,7 +69,6 @@ body {
     color: var(--text-main);
     font-family: var(--font-sans);
     line-height: 1.6;
-    overflow-x: hidden;
     transition: background-color 0.5s ease, color 0.5s ease;
     min-height: 100vh;
 }
@@ -82,6 +81,7 @@ body {
     overflow: hidden;
     background: var(--bg-base);
     transition: background-color 0.5s ease;
+    pointer-events: none;
 }
 
 .blob {
@@ -314,6 +314,28 @@ header {
     gap: 1rem;
 }
 
+.project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 0.5rem;
+}
+
+.project-header h3 {
+    margin-bottom: 0;
+}
+
+.project-links {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.project-links .small-btn {
+    width: 32px;
+    height: 32px;
+    font-size: 0.8rem;
+}
+
 .tags-container {
     display: flex;
     flex-wrap: wrap;
@@ -343,6 +365,69 @@ header {
     margin-top: 1.5rem;
 }
 
+/* Toast Notifications */
+#toast-container {
+    position: fixed;
+    top: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2000;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    pointer-events: none;
+}
+
+.toast {
+    background: var(--glass-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border);
+    color: var(--text-main);
+    padding: 0.75rem 1.5rem;
+    border-radius: 12px;
+    box-shadow: var(--glass-shadow);
+    font-weight: 500;
+    animation: slideDown 0.3s ease-out forwards;
+}
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.toast.fade-out {
+    animation: fadeOut 0.3s ease-in forwards;
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; transform: translateY(0); }
+    to { opacity: 0; transform: translateY(-20px); }
+}
+
+/* Back to Top */
+#back-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 900;
+    width: 50px;
+    height: 50px;
+    font-size: 1.2rem;
+    transition: opacity 0.3s, transform 0.3s, background 0.3s;
+}
+
+[dir="rtl"] #back-to-top {
+    right: auto;
+    left: 2rem;
+}
+
+#back-to-top.hidden {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(20px);
+}
+
 /* Chatbot UI */
 #chatbot-container {
     position: fixed;
@@ -352,6 +437,7 @@ header {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    pointer-events: none;
 }
 
 [dir="rtl"] #chatbot-container {
@@ -365,6 +451,7 @@ header {
     height: 64px;
     border-radius: 50%;
     box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+    pointer-events: auto;
 }
 
 #chatbot-window {
@@ -377,6 +464,7 @@ header {
     transform-origin: bottom left;
     transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s ease;
     overflow: hidden;
+    pointer-events: auto;
 }
 
 [dir="rtl"] #chatbot-window {
