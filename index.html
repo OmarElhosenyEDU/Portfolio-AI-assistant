@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Tech Portfolio</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Atmospheric Background -->
+    <div class="bg-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="glass-panel">
+        <div class="logo">Alex.Dev</div>
+        <div class="controls">
+            <button id="lang-toggle" class="glass-btn" aria-label="Toggle Language">عربي</button>
+            <button id="theme-toggle" class="glass-btn" aria-label="Toggle Theme">☀️</button>
+        </div>
+    </header>
+
+    <!-- Bento Grid Main Content -->
+    <main class="bento-grid">
+        <!-- Hero Section -->
+        <section class="bento-item span-2-col span-2-row hero-card">
+            <div class="hero-content">
+                <span class="badge" data-i18n="hero_greeting">Hello, I'm Alex</span>
+                <h1 data-i18n="hero_title">Full-Stack Developer & UI/UX Enthusiast</h1>
+                <p data-i18n="hero_desc">I craft high-performance, beautiful web applications with a focus on user experience, modern architectures, and scalable backend systems.</p>
+                <div class="hero-actions">
+                    <a href="#contact" class="glass-btn primary" data-i18n="contact_btn">Get in touch</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section class="bento-item span-1-col span-2-row list-card">
+            <h2 data-i18n="exp_title">Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <h3 data-i18n="exp_1_title">Senior Developer</h3>
+                    <p class="text-muted" data-i18n="exp_1_comp">TechCorp Inc. • 2021 - Present</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <h3 data-i18n="exp_2_title">Frontend Engineer</h3>
+                    <p class="text-muted" data-i18n="exp_2_comp">WebStudio • 2018 - 2021</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <h3 data-i18n="exp_3_title">UI Designer</h3>
+                    <p class="text-muted" data-i18n="exp_3_comp">CreativeG • 2016 - 2018</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section class="bento-item span-1-col span-2-row list-card">
+            <h2 data-i18n="proj_title">Featured Projects</h2>
+            <div class="project-list">
+                <div class="project-item glass-panel-inner">
+                    <h3 data-i18n="proj_1_title">Nexus AI Dashboard</h3>
+                    <p class="text-muted" data-i18n="proj_1_desc">A real-time analytics dashboard powered by machine learning.</p>
+                </div>
+                <div class="project-item glass-panel-inner">
+                    <h3 data-i18n="proj_2_title">Aura E-Commerce</h3>
+                    <p class="text-muted" data-i18n="proj_2_desc">High-conversion headless storefront built with modern web tech.</p>
+                </div>
+                <div class="project-item glass-panel-inner">
+                    <h3 data-i18n="proj_3_title">Nova Design System</h3>
+                    <p class="text-muted" data-i18n="proj_3_desc">Open-source component library for React and Vue.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section class="bento-item span-2-col span-1-row skills-card">
+            <h2 data-i18n="skills_title">Tech Stack</h2>
+            <div class="tags-container">
+                <span class="glass-tag">JavaScript (ES6+)</span>
+                <span class="glass-tag">TypeScript</span>
+                <span class="glass-tag">React & Next.js</span>
+                <span class="glass-tag">Node.js & Express</span>
+                <span class="glass-tag">Python & Django</span>
+                <span class="glass-tag">PostgreSQL</span>
+                <span class="glass-tag">GraphQL</span>
+                <span class="glass-tag">Docker & AWS</span>
+                <span class="glass-tag">Figma</span>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section class="bento-item span-1-col span-1-row center-card">
+            <h2 data-i18n="edu_title">Education</h2>
+            <div class="edu-content">
+                <h3 data-i18n="edu_deg">BSc Computer Science</h3>
+                <p class="text-muted" data-i18n="edu_uni">University of Technology<br>2014 - 2018</p>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="bento-item span-1-col span-1-row center-card highlight-card">
+            <h2 data-i18n="contact_title">Let's Connect</h2>
+            <p class="text-muted" data-i18n="contact_desc">Available for freelance opportunities and exciting projects.</p>
+            <div class="social-links">
+                <a href="#" class="glass-btn icon-btn">GH</a>
+                <a href="#" class="glass-btn icon-btn">IN</a>
+                <a href="#" class="glass-btn icon-btn">TW</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Chatbot UI -->
+    <div id="chatbot-container">
+        <div id="chatbot-window" class="glass-panel hidden">
+            <div class="chatbot-header">
+                <div class="chat-title-group">
+                    <span class="status-dot"></span>
+                    <h3 data-i18n="chat_title">AI Assistant</h3>
+                </div>
+                <button id="close-chat" class="glass-btn icon-btn small-btn">✕</button>
+            </div>
+            <div id="chat-messages">
+                <!-- Messages injected here -->
+            </div>
+            <div id="chat-loading" class="hidden">
+                <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+            </div>
+            <div class="chatbot-input">
+                <input type="text" id="chat-input" placeholder="Ask me anything..." data-i18n-placeholder="chat_placeholder">
+                <button id="send-btn" class="glass-btn primary" data-i18n="chat_send">Send</button>
+            </div>
+        </div>
+        <button id="chatbot-toggle" class="glass-btn circular-btn" aria-label="Open Chat">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+        </button>
+    </div>
+
+    <script src="./js/script.js"></script>
+    <script src="./js/chatbot.js"></script>
+</body>
+</html>
