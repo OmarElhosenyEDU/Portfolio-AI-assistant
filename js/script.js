@@ -89,8 +89,6 @@ function applyLang(lang) {
         const key = el.getAttribute('data-i18n');
         if (translations[lang][key]) {
             el.innerHTML = translations[lang][key].replace('•', '<br>•'); 
-            // Small hack to keep line breaks for education/experience if needed, 
-            // but innerHTML handles the raw string fine.
         }
     });
 
@@ -119,6 +117,34 @@ document.addEventListener('DOMContentLoaded', () => {
         currentLang = currentLang === 'en' ? 'ar' : 'en';
         localStorage.setItem('lang', currentLang);
         applyLang(currentLang);
+    });
+
+    // Intersection Observer for Scroll Animations
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.15
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                
+                // If it's the skills section, animate progress bars
+                if (entry.target.querySelector('.skills-container')) {
+                    const skillBars = entry.target.querySelectorAll('.skill-bar-fill');
+                    skillBars.forEach(bar => {
+                        const width = bar.getAttribute('data-width');
+                        bar.style.width = width;
+                    });
+                }
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('.reveal-on-scroll').forEach(el => {
+        observer.observe(el);
     });
 
     // Download CV Functionality
