@@ -3,7 +3,7 @@
 const translations = {
     en: {
         toggle_lang: "عربي",
-        hero_greeting: "Hello, I'm Alex",
+        hero_greeting: "Hello, I'm Omar",
         hero_title: "Full-Stack Developer & UI/UX Enthusiast",
         hero_desc: "I craft high-performance, beautiful web applications with a focus on user experience, modern architectures, and scalable backend systems.",
         contact_btn: "Get in touch",
@@ -42,7 +42,7 @@ const translations = {
     },
     ar: {
         toggle_lang: "English",
-        hero_greeting: "مرحباً، أنا أليكس",
+        hero_greeting: "مرحباً، أنا عمر",
         hero_title: "مطور واجهات متكاملة ومهتم بتجربة المستخدم",
         hero_desc: "أقوم بتصميم تطبيقات ويب عالية الأداء وجميلة مع التركيز على تجربة المستخدم والبنى الحديثة والأنظمة الخلفية القابلة للتوسع.",
         contact_btn: "تواصل معي",
@@ -163,12 +163,12 @@ document.addEventListener('DOMContentLoaded', () => {
         downloadBtn.addEventListener('click', (e) => {
             e.preventDefault();
             try {
-                const cvContent = "Alex's Resume\n\nFull-Stack Developer\nExperience: 5+ Years\nSkills: JavaScript, React, Node.js, Python, PostgreSQL, Docker\n\nContact: alex@example.com";
+                const cvContent = "Omar's Resume\n\nFull-Stack Developer\nExperience: 5+ Years\nSkills: JavaScript, React, Node.js, Python, PostgreSQL, Docker\n\nContact: omar@example.com";
                 const blob = new Blob([cvContent], { type: 'text/plain' });
                 const url = URL.createObjectURL(blob);
                 const a = document.createElement('a');
                 a.href = url;
-                a.download = 'Alex_CV.txt';
+                a.download = 'Omar_CV.txt';
                 document.body.appendChild(a);
                 a.click();
                 document.body.removeChild(a);
@@ -187,7 +187,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (copyEmailBtn) {
         copyEmailBtn.addEventListener('click', (e) => {
             e.preventDefault();
-            copyToClipboard('alex@example.com').then(() => {
+            copyToClipboard('omar@example.com').then(() => {
                 showToast(translations[currentLang].toast_email || "Email copied to clipboard!");
             }).catch(err => {
                 console.error('Failed to copy text: ', err);
