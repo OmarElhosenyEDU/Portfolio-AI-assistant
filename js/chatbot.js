@@ -33,8 +33,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const sendBtn = document.getElementById('send-btn');
     const loadingIndicator = document.getElementById('chat-loading');
 
-    // Load history
-    let chatHistory = JSON.parse(localStorage.getItem('chatHistory')) || [];
+    // Load history safely
+    let chatHistory = [];
+    try {
+        const stored = localStorage.getItem('chatHistory');
+        if (stored) {
+            chatHistory = JSON.parse(stored);
+            if (!Array.isArray(chatHistory)) chatHistory = [];
+        }
+    } catch (e) {
+        console.error("Failed to parse chat history", e);
+        chatHistory = [];
+    }
 
     function saveHistory() {
         localStorage.setItem('chatHistory', JSON.stringify(chatHistory));
@@ -73,7 +83,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     renderHistory();
 
-    chatToggle.addEventListener('click', () => {
+    chatToggle.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
         chatWindow.classList.toggle('hidden');
         if (!chatWindow.classList.contains('hidden')) {
             chatInput.focus();
