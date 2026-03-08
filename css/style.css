@@ -115,7 +115,7 @@ body {
     background: var(--glass-bg-inner);
     border: 1px solid var(--glass-border);
     border-radius: 24px;
-    padding: 2.5rem;
+    padding: 3.5rem;
     transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), background 0.3s ease, box-shadow 0.3s ease;
     box-shadow: var(--glass-shadow);
 }
@@ -240,7 +240,7 @@ header {
 
 .section-content {
     width: 100%;
-    max-width: 900px;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
@@ -321,6 +321,12 @@ header {
     gap: 1rem;
 }
 
+.resume-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+}
+
 .timeline {
     display: flex;
     flex-direction: column;
@@ -358,9 +364,9 @@ header {
 }
 
 .project-list {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
 }
 
 .project-item {
@@ -391,9 +397,9 @@ header {
 
 /* Skills Progress Bars */
 .skills-container {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
 }
 
 .skill-bar-wrapper {
@@ -702,6 +708,13 @@ header {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    .resume-grid, .skills-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    .glass-panel-inner {
+        padding: 2rem;
+    }
     header {
         margin: 0;
         left: 1rem;
