@@ -18,6 +18,11 @@ View your app in AI Studio: https://ai.studio/apps/11d54acb-d27c-4373-81de-6b5b2
 2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
 3. Run the app:
    `npm run dev`
+
+   
 # Disclaimer
+
 The AI assistant in this project runs in a demo version 
+
 if you want a real assistant replace API_KEY veriable in chatbot.js (line 13) with your own gemini API key
+
